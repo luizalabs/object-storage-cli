@@ -57,7 +57,6 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 	regionEndpoint := fmt.Sprintf("http://%s:%s", host, port)
 	if e.Secure {
 		regionEndpoint = fmt.Sprintf("https://%s", host)
-		log.Printf("%s", regionEndpoint)
 	}
 	params := map[string]interface{}{
 		"accesskey":      key,
