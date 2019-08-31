@@ -54,12 +54,17 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 		return nil, errMissingPort
 	}
 	key, secret, bucket := files[0], files[1], files[2]
+	regionEndpoint := fmt.Sprintf("http://%s:%s", host, port)
+	if e.Secure {
+		regionEndpoint = fmt.Sprintf("https://%s", host)
+		log.Printf("%s", regionEndpoint)
+	}
 	params := map[string]interface{}{
 		"accesskey":      key,
 		"secretkey":      secret,
 		"region":         e.Region,
 		"bucket":         bucket,
-		"regionendpoint": fmt.Sprintf("http://%s:%s", host, port),
+		"regionendpoint": regionEndpoint,
 		"secure":         e.Secure,
 		"v4auth":         e.V4Auth,
 	}
