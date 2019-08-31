@@ -1,6 +1,8 @@
 package config
 
 import (
+	"fmt"
+
 	"github.com/docker/distribution/registry/storage/driver"
 	"github.com/docker/distribution/registry/storage/driver/factory"
 	// this blank import is used to register the S3 driver with the storage driver factory
