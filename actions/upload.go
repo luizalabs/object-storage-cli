@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 
@@ -26,7 +27,7 @@ func Upload(debug bool) func(c *cli.Context) {
 			log.Fatalf("This command should be called as 'upload $LOCAL_PATH $REMOTE_PATH'")
 		}
 		local := args[0]
-		remote := args[1]
+		remote := fmt.Sprintf("/%s", args[1])
 
 		conf, err := config.FromStorageTypeString(c.GlobalString(config.StorageTypeFlag))
 		if err != nil {
