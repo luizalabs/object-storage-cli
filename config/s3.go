@@ -25,15 +25,15 @@ func (s S3) CreateDriver() (driver.StorageDriver, error) {
 		return nil, err
 	}
 	key, secret, region, bucket := files[0], files[1], files[2], files[3]
-	host := parseEnvVar(s.S3Host)
+
 	params := map[string]interface{}{
 		"accesskey": key,
 		"secretkey": secret,
 		"region":    region,
 		"bucket":    bucket,
 	}
-	if host != "" {
-		params["regionendpoint"] = fmt.Sprintf("https://%s", host)
+	if s.S3Host != "" {
+		params["regionendpoint"] = fmt.Sprintf("https://%s", s.S3Host)
 	}
 	return factory.Create("s3aws", params)
 }
