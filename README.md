@@ -10,6 +10,8 @@ A Command Line (CLI) Tool for Utilizing Multiple Object Storage Systems from a S
 
 This CLI accepts a single flag called `--storage-type`. The value of that flag determines which object storage API to use, and the remaining sections in this document describe how the CLI gets the location, credentials and other information it needs to work with the specified system.
 
+To build, you need [gox](https://github.com/mitchellh/gox).
+
 ## `s3`
 
 If the storage type is `s3`, the CLI reads three files which specify access key, access secret and region. Each file location can be configured by an environment variable. Each environment variable and its default is listed below.
