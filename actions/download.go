@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -27,7 +28,7 @@ func Download(debug bool) func(c *cli.Context) {
 			log.Fatalf("This command should be called as 'download $REMOTE_PATH $LOCAL_PATH'")
 		}
 
-		remote := args[0]
+		remote := fmt.Sprintf("/%s", args[0])
 		local := args[1]
 
 		conf, err := config.FromStorageTypeString(c.GlobalString(config.StorageTypeFlag))
